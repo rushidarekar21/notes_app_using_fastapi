@@ -28,7 +28,8 @@ async def read_items(request: Request):
 async def create_item(request: Request):
     form = await request.form()
     formDict = dict(form)
-    formDict["important"] = True if formDict.get("information") == "on" else False
+    
+    formDict["important"] = True if formDict.get("important") == "on" else False
     note = conn.notes.notes.insert_one(formDict)
     return {"Success" : True}
     
